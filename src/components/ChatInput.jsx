@@ -15,5 +15,22 @@ function ChatInput() {
     </div>
   );
 }
-
+const MessageTextArea = styled(TextareaAutosize)`
+  width: 100%;
+  padding: 1.2rem 1.5rem;
+  outline: none;
+  border: none;
+  resize: none;
+  border-radius: 1.2rem;
+  background-color: ${Grey6};
+  font-family: Pretendard;
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 110%; /* 1.76rem */
+  &:focus {
+    border: none;
+    outline: none;
+  }
+`;
 export default ChatInput;
