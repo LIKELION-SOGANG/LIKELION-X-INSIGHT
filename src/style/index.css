@@ -1,0 +1,31 @@
+@font-face {
+  font-family: 'Noto-sans';
+  font-weight: 400;
+  src: url('../assets/fonts/NotoSansKR-Regular.ttf');
+}
+@font-face {
+  font-family: 'Noto-sans';
+  font-weight: 500;
+  src: url('../assets/fonts/NotoSansKR-Medium.ttf');
+}
+@font-face {
+  font-family: 'Playfair';
+  font-weight: 400;
+  src: url('../assets/fonts/PlayfairDisplay-Regular.ttf');
+}
+@font-face {
+  font-family: 'Playfair';
+  font-weight: 500;
+  font-style: italic;
+  src: url('../assets/fonts/PlayfairDisplay-MediumItalic.ttf');
+}
+.app-container {
+  @media (max-width: 768px) {
+    width: 100%;
+    background-color: white;
+  }
+  @media (min-width: 768px) {
+    width: 400px;
+    margin: 0 auto;
+  }
+}
