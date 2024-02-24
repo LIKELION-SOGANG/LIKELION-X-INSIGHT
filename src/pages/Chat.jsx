@@ -1,9 +1,14 @@
-import React from 'react'
+import React from 'react';
+import ChatHeader from '../components/ChatHeader';
+import ChatMainSection from '../components/ChatMainSection';
 
 function Chat() {
   return (
-    <div>Chat</div>
-  )
+    <>
+      <ChatHeader />
+      <ChatMainSection />
+    </>
+  );
 }
 
-export default Chat
+export default Chat;

@@ -9,4 +9,7 @@ export const GlobalStyles = createGlobalStyle`
     body{
         font-family:'Noto-sans';
     }
+    input:focus{
+        outline:none;
+    }
 `;
