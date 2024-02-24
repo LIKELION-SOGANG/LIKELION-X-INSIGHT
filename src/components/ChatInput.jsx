@@ -5,8 +5,8 @@ import styled from 'styled-components';
 function ChatInput() {
   return (
     <div className="w-[100%] p-5 pb-[20px] border-t border-neutral-300 flex-col justify-start items-center gap-[30px] inline-flex fixed bottom-0 left-0">
-      <div className="w-[320px] h-[66px] mx-auto bg-neutral-50 p-20">
-        <div className="pl-px pt-px pb-[5px] justify-center items-start w-[100%] inline-flex">
+      <div className="w-full md:w-[400px] mx-auto bg-neutral-50 p-20">
+        <div className="pl-px pt-px pb-[5px] justify-center w-[100%] inline-flex item-center">
           <MessageTextArea
             className="text-neutral-500 text-[15px] leading-tight inline-block w-[100%]"
             placeholder={'무엇이든 물어보세요...'}
@@ -25,7 +25,8 @@ const MessageTextArea = styled(TextareaAutosize)`
   border: none;
   resize: none;
   border-radius: 1.2rem;
-  font-size: 1.6rem;
+  padding: 0.3rem;
+  font-size: 1.5rem;
   color: black;
   overflow: visible;
   background-color: rgba(250, 250, 250, 1);
