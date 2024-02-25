@@ -25,7 +25,8 @@
 }
 .app-container {
   @media (max-width: 768px) {
-    width: 100%;
+    width: 400px;
+    margin: 0 auto;
   }
   @media (min-width: 768px) {
     width: 400px;

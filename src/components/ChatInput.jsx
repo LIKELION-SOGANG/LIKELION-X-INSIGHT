@@ -11,7 +11,7 @@ function ChatInput({ isSendIconBlack, setChatInput, chatInput }) {
       <div className="w-full md:w-[400px] mx-auto bg-neutral-50 p-20">
         <div className="pl-px pt-px pb-[5px] justify-center w-[100%] inline-flex items-center">
           <MessageTextArea
-            className="text-neutral-500 text-[15px] leading-tight inline-block w-[100%]"
+            className="text-neutral-500 text-[15px] leading-tight inline-block w-[100%] mr-[37px]"
             placeholder={'무엇이든 물어보세요...'}
             rows={1}
             value={chatInput}
