@@ -2,23 +2,21 @@ import React, { useState } from 'react';
 import '../style/Marquee.css';
 
 const Footer = () => {
-  const [visitNum, setVisitNum] = useState({
-    total_visit: 1000,
-    today_visit: 500,
-  });
-  const increaseVisit = () => {
-    setVisitNum((prevState) => ({
-      total_visit: prevState.total_visit + 1,
-      today_visit: prevState.today_visit + 1,
-    }));
-  };
+  const [visitNum, setVisitNum] = useState({ total_visit: 0, today_visit: 0 });
+  useEffect(() => {
+    const fetchData = async () => {
+      // const res = await instance.get('/api/');
+      // setVisitNum(res?.data?.response);
+    };
+    fetchData();
+  }, []);
 
   return (
     <>
       <div className="marquee">
         <div>
-          <span>Likelion ✽ Insight ✽ Likelion ✽ Insight ✽ </span>
-          <span>Likelion ✽ Insight ✽ Likelion ✽ Insight ✽ </span>
+          <span> ✽ Likelion ✽ Insight ✽ Likelion ✽ Insight </span>
+          <span>✽ Likelion ✽ Insight ✽ Likelion ✽ Insight</span>
         </div>
       </div>
       <div className="w-auto h-[150px] p-[20px] bg-black">
