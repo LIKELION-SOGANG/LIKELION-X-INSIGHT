@@ -48,7 +48,7 @@ const BotCard = () => {
             className="w-[24px] h-[24px] absolute top-[29px] right-[20px]"
           />
           <div className="flex flex-col justify-end">
-            <div className="absolute z-30 w-auto h-[50px] px-21 py-16 top-0 left-0 right-0 bottom-0">
+            <div className="absolute z-30 w-auto h-[50px] p-20 top-0 left-0 right-0 bottom-0">
               <div className="flex flex-row">
                 <img
                   src={heart}
@@ -64,7 +64,7 @@ const BotCard = () => {
               </div>
             </div>
 
-            <div className="absolute z-30 left-0 bottom-8 w-[100%] h-auto flex flex-row ">
+            <div className="absolute z-30 left-0 bottom-8 w-[100%] h-auto mb-[10px] flex flex-row ">
               <div className="relative bg-black min-w-[60px] h-[60px] rounded-full ml-[20px]">
                 <div
                   style={{
