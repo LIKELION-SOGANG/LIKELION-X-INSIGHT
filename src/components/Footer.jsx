@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import '../style/Marquee.css';
-
+import { useEffect } from 'react';
 const Footer = () => {
   const [visitNum, setVisitNum] = useState({ total_visit: 0, today_visit: 0 });
   useEffect(() => {
@@ -24,7 +24,7 @@ const Footer = () => {
           <div className="text-white ">
             <div className="flex flex-row">
               <div
-                onClick={increaseVisit}
+                // onClick={increaseVisit}
                 style={{ fontWeight: '700', fontSize: '14px' }}
               >
                 Total
