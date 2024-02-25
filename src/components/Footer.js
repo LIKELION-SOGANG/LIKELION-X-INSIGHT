@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import "../style/Marquee.css"
 
 const Footer = () => {
   const [visitNum, setVisitNum] = useState({
@@ -12,7 +13,15 @@ const Footer = () => {
     }));
   };
 
+
   return (
+    <>
+<div className="marquee">
+  <div>
+    <span>Likelion  ✽  Insight</span>
+    <span>Likelion  ✽  Insight</span>
+  </div>
+</div>
     <div className="w-auto h-[150px] p-[20px] bg-black">
       <div className="flex flex-col">
         <div className="text-white ">
@@ -70,6 +79,7 @@ const Footer = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 
