@@ -28,7 +28,7 @@ function ChatHeader() {
         </div>
         <div className="ml-auto cursor-pointer">
           <HeartIcon
-            fill={isClickHeart ? 'black' : 'white'}
+            fill={isClickHeart ? 'black' : 'none'}
             onClick={() => {
               setIsClickHeart(!isClickHeart);
             }}
