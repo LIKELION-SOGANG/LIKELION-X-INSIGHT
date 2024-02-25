@@ -12,7 +12,7 @@ const bots = [
     alt: 'Cute',
     name: '귀여운',
     rank: '1',
-    text: '귀여운 봇이 어쩌구저저쩌구어쩌구저저쩌구어쩌구저저쩌구어쩌구저저쩌구',
+    text: '귀여운 서담이가 MBTI 테스트를 하면 F가 100%로 나올 걸요? 당신의 질문에 애교 있는 말투로 대답해요.',
   },
   {
     src: Friendly,
@@ -20,7 +20,7 @@ const bots = [
     alt: 'Friendly',
     name: '친절한',
     rank: '2',
-    text: '친절한 봇이 쩌구저저쩌구어쩌구저저쩌구어쩌구저저쩌구어쩌구저저쩌구어쩌구저저쩌구',
+    text: '친절한 서담이는 귀엽지는 않지만 정중하고 배려심 깊은 말투로 당신의 질문에 대답을 할 거에요. ',
   },
   {
     src: Rude,
@@ -28,7 +28,7 @@ const bots = [
     alt: 'Rude',
     name: '무례한',
     rank: '3',
-    text: '무례한 봇이 구어쩌구저저쩌구어쩌구저저쩌구어쩌구저저쩌구어쩌구저저쩌구어쩌구저저쩌구',
+    text: '너 혹시 T야..? 무례한 서담이는 직설적인 말투를 사용하여 당신의 질문에 간결한 답변을 제공해요. ',
   },
 ];
 const BotCard = () => {
@@ -89,7 +89,7 @@ const BotCard = () => {
                   {bot.alt}
                 </div>
               </div>
-              <div className="w-auto min-h-[60px] ml-[20px] mr-[20px]  text-white text-[14px] leading-[22px]">
+              <div className="w-auto min-h-[60px] ml-[20px] mr-[20px]  text-white text-[14px] leading-[22px] whitespace-pre-line">
                 {bot.text}
               </div>
             </div>

@@ -5,9 +5,10 @@ import Footer from '../components/Footer';
 function Home() {
   const data = {
     title: '연애 고수 서담이와 채팅하기',
-    explain: '서비스 설명',
+    explain:
+      '서담의 데이터를 활용하여 만든 \n 챗봇 서담이와 연애 상담을 시작해보세요!',
     alpha:
-      '서비스 부가설명 어쩌구 저쩌구 반복 어쩌구 저쩌구 반복어쩌구 저쩌구 반복어쩌구 저쩌구 반복',
+      "경영 데이터 학회 '인사이트'와 IT 창업 동아리 '멋쟁이 사자처럼'이 협업해서  만든 프로젝트입니다.",
   };
   return (
     <>
@@ -26,8 +27,27 @@ function Home() {
           letterSpacing: '-0.8px',
         }}
       >
-        <div className="mb-[20px]">{data.title}</div>
-        <div className="">{data.explain}</div>
+        <div
+          style={{
+            fontWeight: '700',
+            fontSize: '24px',
+            fontFamily: 'Noto-sans',
+            letterSpacing: '-0.8px',
+          }}
+        >
+          {data.title}
+        </div>
+        <div
+          style={{
+            fontFamily: 'Noto-sans',
+            lineHeight: '30px',
+            marginTop: '20px',
+            fontSize: '18px',
+            whiteSpace: 'pre-line',
+          }}
+        >
+          {data.explain}
+        </div>
       </div>
       <BotCard />
       <div
