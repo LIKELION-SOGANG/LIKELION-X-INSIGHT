@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Cute from '../assets/images/bg1.png';
 import Friendly from '../assets/images/bg2.png';
 import Rude from '../assets/images/bg3.png';
 import heart from '../assets/images/heart-icon.svg';
 import arrow from '../assets/images/right-arrow.svg';
 import { useNavigate } from 'react-router-dom';
+import { instance } from '../api/axios';
 
 const bots = [
   {
@@ -36,13 +37,40 @@ const bots = [
   },
 ];
 const BotCard = () => {
+  const [chatbots, setChatbots] = useState([]);
+
+  useEffect(() => {
+    fetchChatbots();
+  }, []);
   const navigate = useNavigate();
   const handleNavigate = (id) => {
     navigate(`/chat/${id}`);
   };
+  const fetchChatbots = () => {
+    instance
+      .get(`/api/chatbot`)
+      .then((response) => {
+        if (response.data.success) {
+          setChatbots(response.data.response);
+          console.log(chatbots);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        alert('봇 불러오기 실패');
+      });
+  };
+
+  const combinedData = chatbots.map((chatbot) => {
+    const botData = bots.find((bot) => bot.id === chatbot.chatbotId);
+    return {
+      ...chatbot,
+      ...(botData || {}),
+    };
+  });
   return (
     <div className="flex flex-col items-center">
-      {bots.map((bot, index) => (
+      {combinedData.map((bot, index) => (
         <div
           key={index}
           className="relative flex mb-[20px] min-h-[353px] ml-[20px] mr-[20px]"
@@ -65,7 +93,7 @@ const BotCard = () => {
                   className="w-[11.4px] h-[10.5px] mt-[2px] mr-1"
                 />
                 <div className="text-white text-[12px] mb-[6px]">
-                  {bot.number} ∙ 오늘 {bot.rank}위
+                  {bot.chatbotLike} ∙ 오늘 {bot.chatbotRanking}위
                 </div>
               </div>
 
