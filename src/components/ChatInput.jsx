@@ -3,7 +3,7 @@ import TextareaAutosize from 'react-textarea-autosize';
 import styled from 'styled-components';
 import { ReactComponent as SendIcon } from '../assets/images/send-icon.svg';
 
-function ChatInput({ isSendIconBlack }) {
+function ChatInput({ isSendIconBlack, setChatInput, chatInput }) {
   // 텍스트 1자 이상일 때 아이콘 검은색으로
   const sendIconColor = isSendIconBlack ? 'black' : '#D1D1D5';
   return (
@@ -14,6 +14,10 @@ function ChatInput({ isSendIconBlack }) {
             className="text-neutral-500 text-[15px] leading-tight inline-block w-[100%]"
             placeholder={'무엇이든 물어보세요...'}
             rows={1}
+            value={chatInput}
+            onChange={(e) => {
+              setChatInput(e.target.value);
+            }}
             maxRows={5}
           />
           <SendIcon fill={sendIconColor} />
