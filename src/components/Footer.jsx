@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import '../style/Marquee.css';
 import { useEffect } from 'react';
+import { instance } from '../api/axios';
 const Footer = () => {
-  const [visitNum, setVisitNum] = useState({ total_visit: 0, today_visit: 0 });
+  const [visitNum, setVisitNum] = useState({ totalVisit: 0, todayVisit: 0 });
   useEffect(() => {
     const fetchData = async () => {
-      // const res = await instance.get('/api/');
-      // setVisitNum(res?.data?.response);
+      const res = await instance.get('/api/');
+      setVisitNum(res?.data?.response);
     };
     fetchData();
   }, []);
@@ -23,12 +24,7 @@ const Footer = () => {
         <div className="flex flex-col">
           <div className="text-white ">
             <div className="flex flex-row">
-              <div
-                // onClick={increaseVisit}
-                style={{ fontWeight: '700', fontSize: '14px' }}
-              >
-                Total
-              </div>
+              <div style={{ fontWeight: '700', fontSize: '14px' }}>Total</div>
               <div
                 style={{
                   fontWeight: '400',
@@ -36,7 +32,7 @@ const Footer = () => {
                   marginLeft: '4px',
                 }}
               >
-                {visitNum.total_visit}
+                {visitNum.totalVisit}
               </div>
             </div>{' '}
           </div>
@@ -62,7 +58,7 @@ const Footer = () => {
                   marginLeft: '4px',
                 }}
               >
-                {visitNum.today_visit}
+                {visitNum.todayVisit}
               </div>
             </div>{' '}
           </div>
