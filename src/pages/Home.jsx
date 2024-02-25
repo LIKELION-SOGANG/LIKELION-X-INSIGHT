@@ -1,9 +1,10 @@
 import React from 'react';
 import BotCard from '../components/BotCard';
+import Footer from '../components/Footer';
 
 function Home() {
   const data = {
-    title: '서비스 이름',
+    title: '연애 고수 서담이와 채팅하기',
     explain: '서비스 설명',
     alpha:
       '서비스 부가설명 어쩌구 저쩌구 반복 어쩌구 저쩌구 반복어쩌구 저쩌구 반복어쩌구 저쩌구 반복',
@@ -45,6 +46,7 @@ function Home() {
       >
         {data.alpha}
       </div>
+      <Footer />
     </>
   );
 }
