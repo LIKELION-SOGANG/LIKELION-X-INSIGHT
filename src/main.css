@@ -24,6 +24,7 @@
   src: url('assets/fonts/PlayfairDisplay-MediumItalic.ttf');
 }
 .app-container {
+  overflow: hidden;
   @media (max-width: 768px) {
     width: 100vw;
     margin: 0 auto;
