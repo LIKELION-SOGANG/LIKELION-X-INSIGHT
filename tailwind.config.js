@@ -19,6 +19,9 @@ module.exports = {
       minWidth: px0_200,
       minHeight: px0_200,
       spacing: px0_200,
+      animation: {
+        'spin-slow': 'spin 1s linear infinite',
+      },
     },
   },
   plugins: [],
