@@ -11,28 +11,25 @@ const bots = [
   {
     src: Cute,
     number: '21',
-    id: '1',
+    id: 1,
     alt: 'Cute',
     name: '귀여운',
-    rank: '1',
     text: '귀여운 서담이가 MBTI 테스트를 하면 F가 100%로 나올 걸요? 당신의 질문에 애교 있는 말투로 대답해요.',
   },
   {
     src: Friendly,
     number: '35',
     alt: 'Friendly',
-    id: '2',
+    id: 2,
     name: '친절한',
-    rank: '2',
     text: '친절한 서담이는 귀엽지는 않지만 정중하고 배려심 깊은 말투로 당신의 질문에 대답을 할 거에요. ',
   },
   {
     src: Rude,
     number: '51',
     alt: 'Tough',
-    id: '3',
+    id: 3,
     name: '까칠한',
-    rank: '3',
     text: '너 혹시 T야..? 까칠한 서담이는 직설적인 말투를 사용하여 당신의 질문에 간결한 답변을 제공해요. ',
   },
 ];
@@ -41,10 +38,13 @@ const BotCard = () => {
 
   useEffect(() => {
     fetchChatbots();
+    console.log(chatbots);
+    console.log('여기야:', combinedData);
   }, []);
   const navigate = useNavigate();
   const handleNavigate = (id) => {
     navigate(`/chat/${id}`);
+    console.log(id);
   };
   const fetchChatbots = () => {
     instance
@@ -52,7 +52,6 @@ const BotCard = () => {
       .then((response) => {
         if (response.data.success) {
           setChatbots(response.data.response);
-          console.log(chatbots);
         }
       })
       .catch((error) => {
@@ -62,12 +61,14 @@ const BotCard = () => {
   };
 
   const combinedData = chatbots.map((chatbot) => {
-    const botData = bots.find((bot) => bot.id === chatbot.chatbotId);
+    const botData = bots.find((bot) => bot.id - 1 === chatbot.chatbotId - 1);
     return {
       ...chatbot,
       ...(botData || {}),
     };
   });
+  combinedData.sort((a, b) => a.chatbotId - b.chatbotId);
+
   return (
     <div className="flex flex-col items-center">
       {combinedData.map((bot, index) => (
