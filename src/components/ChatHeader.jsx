@@ -3,7 +3,7 @@ import leftArrow from '../assets/images/left-arrow.svg';
 import heartIcon from '../assets/images/heart-outline-icon.svg';
 function ChatHeader() {
   return (
-    <header className="flex h-[68px] bg-zinc-100 sticky top-0 left-0 w-[100%]">
+    <header className="flex h-[68px] bg-zinc-100 sticky top-0 left-0 w-[100%] z-10 border-b border-gray-400">
       <nav className="flex items-center w-[100%] px-20">
         <div className="flex gap-18">
           <img src={leftArrow} alt="뒤로가기 버튼" />
