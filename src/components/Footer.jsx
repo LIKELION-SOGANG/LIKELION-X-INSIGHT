@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import '../style/Marquee.css';
-import { instance } from '../api/axios';
 
 const Footer = () => {
   const [visitNum, setVisitNum] = useState({ total_visit: 0, today_visit: 0 });
   useEffect(() => {
     const fetchData = async () => {
-      const res = await instance.get('/api/');
-      setVisitNum(res?.data?.response);
+      // const res = await instance.get('/api/');
+      // setVisitNum(res?.data?.response);
     };
     fetchData();
   }, []);
@@ -16,15 +15,20 @@ const Footer = () => {
     <>
       <div className="marquee">
         <div>
-          <span>Likelion ✽ Insight</span>
-          <span>Likelion ✽ Insight</span>
+          <span> ✽ Likelion ✽ Insight ✽ Likelion ✽ Insight </span>
+          <span>✽ Likelion ✽ Insight ✽ Likelion ✽ Insight</span>
         </div>
       </div>
       <div className="w-auto h-[150px] p-[20px] bg-black">
         <div className="flex flex-col">
           <div className="text-white ">
             <div className="flex flex-row">
-              <div style={{ fontWeight: '700', fontSize: '14px' }}>Total</div>
+              <div
+                onClick={increaseVisit}
+                style={{ fontWeight: '700', fontSize: '14px' }}
+              >
+                Total
+              </div>
               <div
                 style={{
                   fontWeight: '400',
