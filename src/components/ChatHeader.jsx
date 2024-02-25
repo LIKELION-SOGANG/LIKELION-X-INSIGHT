@@ -26,7 +26,7 @@ function ChatHeader() {
             <h1 className="font-medium text-2xl">귀여운 서담이</h1>
           </div>
         </div>
-        <div className="ml-auto">
+        <div className="ml-auto cursor-pointer">
           <HeartIcon
             fill={isClickHeart ? 'black' : 'white'}
             onClick={() => {

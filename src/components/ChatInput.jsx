@@ -8,7 +8,7 @@ function ChatInput({ isSendIconBlack, setChatInput, chatInput }) {
   const sendIconColor = isSendIconBlack ? 'black' : '#D1D1D5';
   return (
     <div className="w-[100%] border-t border-neutral-300 flex-col justify-start items-center gap-[30px] inline-flex fixed bottom-0 left-0">
-      <div className="w-full md:w-[400px] mx-auto bg-neutral-50 p-20">
+      <div className="w-full lg:w-[400px] mx-auto bg-neutral-50 p-20">
         <div className="pl-px pt-px pb-[5px] justify-center w-[100%] inline-flex items-center">
           <MessageTextArea
             className="text-neutral-500 text-[15px] leading-tight inline-block w-[100%] mr-[37px]"
@@ -20,7 +20,12 @@ function ChatInput({ isSendIconBlack, setChatInput, chatInput }) {
             }}
             maxRows={5}
           />
-          <SendIcon fill={sendIconColor} />
+          <div
+            className="cursor-pointer
+          "
+          >
+            <SendIcon fill={sendIconColor} />
+          </div>
         </div>
       </div>
     </div>
