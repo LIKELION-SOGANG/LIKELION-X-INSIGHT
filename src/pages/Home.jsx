@@ -71,6 +71,7 @@ function Home() {
             fontFamily: 'Noto-sans',
             fontSize: '20px',
             lineHeight: '22px',
+            fontWeight: 700,
             textAlign: 'center',
             marginTop: '0px',
             marginBottom: '33px',
