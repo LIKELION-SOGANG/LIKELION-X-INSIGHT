@@ -4,7 +4,6 @@ import ChatInput from './ChatInput';
 function ChatMainSection() {
   // 채팅 텍스트
   const [chatInput, setChatInput] = useState('');
-
   return (
     <main className="border-t-2 border-slate-800 pr-16 pl-42 py-20 min-h-120 flex flex-col gap-[16px] mb-[60px]">
       <ChatBubble
