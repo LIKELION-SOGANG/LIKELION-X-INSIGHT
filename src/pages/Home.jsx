@@ -1,14 +1,14 @@
 import React from 'react';
 import BotCard from '../components/BotCard';
 import Footer from '../components/Footer';
-
+import chat_cute from '../assets/images/chat_cute.png';
+import chat_tough from '../assets/images/chat_tough.png';
 function Home() {
   const data = {
     title: '연애 고수 서담이와 채팅하기',
     explain:
       '서담의 데이터를 활용하여 만든 \n 챗봇 서담이와 연애 상담을 시작해보세요!',
-    alpha:
-      "경영 데이터 학회 '인사이트'와 IT 창업 동아리 '멋쟁이 사자처럼'이 협업해서  만든 프로젝트입니다.",
+    alpha: '이런 답변을 받을 수 있어요!',
   };
   return (
     <>
@@ -23,7 +23,7 @@ function Home() {
           lineHeight: '22px',
           textAlign: 'center',
           marginTop: '70px',
-          marginBottom: '103px',
+          marginBottom: '70px',
           letterSpacing: '-0.8px',
         }}
       >
@@ -53,18 +53,37 @@ function Home() {
       <div
         style={{
           display: 'flex',
+          flexDirection: 'column',
           justifyContent: 'center',
           alignItems: 'center',
-          fontFamily: 'Playfair',
-          fontSize: '24px',
-          lineHeight: '22px',
           textAlign: 'center',
-          marginTop: '70px',
-          marginBottom: '110px',
-          letterSpacing: '-0.8px',
+          marginTop: '188px',
+          marginBottom: '145px',
+          marginLeft: '20px',
+          marginRight: '20px',
         }}
       >
-        {data.alpha}
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            fontFamily: 'Noto-sans',
+            fontSize: '20px',
+            lineHeight: '22px',
+            textAlign: 'center',
+            marginTop: '0px',
+            marginBottom: '33px',
+            letterSpacing: '-0.8px',
+          }}
+        >
+          {data.alpha}
+        </div>
+        <img
+          src={chat_cute}
+          style={{ width: 'auto', height: 'auto', marginBottom: '33px' }}
+        />
+        <img src={chat_tough} style={{ width: 'auto', height: 'auto' }} />
       </div>
       <Footer />
     </>
