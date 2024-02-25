@@ -4,34 +4,42 @@ import Friendly from '../assets/images/bg2.png';
 import Rude from '../assets/images/bg3.png';
 import heart from '../assets/images/heart-icon.svg';
 import arrow from '../assets/images/right-arrow.svg';
+import { useNavigate } from 'react-router-dom';
 
 const bots = [
   {
     src: Cute,
     number: '21',
+    id: '1',
     alt: 'Cute',
     name: '귀여운',
     rank: '1',
-    text: '귀여운 봇이 어쩌구저저쩌구어쩌구저저쩌구어쩌구저저쩌구어쩌구저저쩌구',
+    text: '귀여운 서담이가 MBTI 테스트를 하면 F가 100%로 나올 걸요? 당신의 질문에 애교 있는 말투로 대답해요.',
   },
   {
     src: Friendly,
     number: '35',
     alt: 'Friendly',
+    id: '2',
     name: '친절한',
     rank: '2',
-    text: '친절한 봇이 쩌구저저쩌구어쩌구저저쩌구어쩌구저저쩌구어쩌구저저쩌구어쩌구저저쩌구',
+    text: '친절한 서담이는 귀엽지는 않지만 정중하고 배려심 깊은 말투로 당신의 질문에 대답을 할 거에요. ',
   },
   {
     src: Rude,
     number: '51',
-    alt: 'Rude',
-    name: '무례한',
+    alt: 'Tough',
+    id: '3',
+    name: '까칠한',
     rank: '3',
-    text: '무례한 봇이 구어쩌구저저쩌구어쩌구저저쩌구어쩌구저저쩌구어쩌구저저쩌구어쩌구저저쩌구',
+    text: '너 혹시 T야..? 까칠한 서담이는 직설적인 말투를 사용하여 당신의 질문에 간결한 답변을 제공해요. ',
   },
 ];
 const BotCard = () => {
+  const navigate = useNavigate();
+  const handleNavigate = (id) => {
+    navigate(`/chat/${id}`);
+  };
   return (
     <div className="flex flex-col items-center">
       {bots.map((bot, index) => (
@@ -45,7 +53,9 @@ const BotCard = () => {
           />
           <img
             src={arrow}
-            className="w-[24px] h-[24px] absolute top-[29px] right-[20px]"
+            className="z-50 w-[24px] h-[24px] absolute top-[29px] right-[20px]"
+            style={{ cursor: 'pointer' }}
+            onClick={() => handleNavigate(bot.id)}
           />
           <div className="flex flex-col justify-end">
             <div className="absolute z-30 w-auto h-[50px] p-20 top-0 left-0 right-0 bottom-0">
@@ -89,7 +99,7 @@ const BotCard = () => {
                   {bot.alt}
                 </div>
               </div>
-              <div className="w-auto min-h-[60px] ml-[20px] mr-[20px]  text-white text-[14px] leading-[22px]">
+              <div className="w-auto min-h-[60px] ml-[20px] mr-[20px]  text-white text-[14px] leading-[22px] whitespace-pre-line">
                 {bot.text}
               </div>
             </div>
