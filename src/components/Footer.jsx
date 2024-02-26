@@ -6,8 +6,14 @@ const Footer = () => {
   const [visitNum, setVisitNum] = useState({ totalVisit: 0, todayVisit: 0 });
   useEffect(() => {
     const fetchData = async () => {
-      const res = await instance.get('/api/');
-      setVisitNum(res?.data?.response);
+      try {
+        const res = await instance.get('/api/');
+        if (res?.status === 200) {
+          setVisitNum(res?.data?.response);
+        }
+      } catch (err) {
+        console.log(err);
+      }
     };
     fetchData();
   }, []);

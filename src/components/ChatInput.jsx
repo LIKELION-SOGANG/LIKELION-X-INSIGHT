@@ -2,10 +2,32 @@ import React from 'react';
 import TextareaAutosize from 'react-textarea-autosize';
 import styled from 'styled-components';
 import { ReactComponent as SendIcon } from '../assets/images/send-icon.svg';
-
+import { instance } from '../api/axios';
+import { useParams } from 'react-router-dom';
+import { promptMessage } from '../util/prompt';
 function ChatInput({ isSendIconBlack, setChatInput, chatInput }) {
   // 텍스트 1자 이상일 때 아이콘 검은색으로
   const sendIconColor = isSendIconBlack ? 'black' : '#D1D1D5';
+  const { id } = useParams();
+  const handleClickPostButton = async () => {
+    const body = {
+      model: 'ft:gpt-3.5-turbo-1106:personal:tutorial:8q57HluT',
+      role1: 'system',
+      message1:
+        id === 1
+          ? promptMessage.cute
+          : id === 2
+            ? promptMessage.friendly
+            : promptMessage.rude,
+      role2: 'user',
+      message2: chatInput,
+      top_n: 0.92,
+      temperature: 0.2,
+    };
+    const res = await instance.post('api/chatbot/', body);
+    console.log(res);
+    setChatInput('');
+  };
   return (
     <div className="w-[100%] border-t border-neutral-300 flex-col justify-start items-center gap-[30px] inline-flex fixed bottom-0 left-0">
       <div className="w-full lg:w-[400px] mx-auto bg-neutral-50 p-20">
@@ -24,7 +46,7 @@ function ChatInput({ isSendIconBlack, setChatInput, chatInput }) {
             className="cursor-pointer
           "
           >
-            <SendIcon fill={sendIconColor} />
+            <SendIcon fill={sendIconColor} onClick={handleClickPostButton} />
           </div>
         </div>
       </div>
