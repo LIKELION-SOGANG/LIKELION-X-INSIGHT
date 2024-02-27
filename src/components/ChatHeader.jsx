@@ -19,7 +19,7 @@ function ChatHeader() {
       profileStyle = "bg-[url('./assets/images/bg2.png')]";
       break;
     case '3':
-      nickname = '무례한 서담이';
+      nickname = '까칠한 서담이';
       engType = 'Tough';
       profileStyle = "bg-[url('./assets/images/bg3.png')]";
       break;
@@ -37,6 +37,12 @@ function ChatHeader() {
       console.log(err);
     }
   };
+
+  useEffect(() => {
+    instance.get(`api/chatbot/${id}/like`).then((res) => {
+      setIsClickHeart(res?.data?.response?.isLiked);
+    });
+  }, []);
   return (
     <div className="fixed top-0 left-0 w-[100%] z-10">
       <header className="flex h-[68px] bg-zinc-100 z-10 border-b-1 border-solid border-neutral-300 w-full lg:w-[400px] mx-auto">
