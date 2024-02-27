@@ -38,36 +38,38 @@ function ChatHeader() {
     }
   };
   return (
-    <header className="flex h-[68px] bg-zinc-100 sticky top-0 left-0 w-[100%] z-10 border-b-1 border-solid border-neutral-300">
-      <nav className="flex items-center w-[100%] px-20">
-        <div className="flex gap-18">
-          <img
-            src={leftArrow}
-            alt="뒤로가기 버튼"
-            className="cursor-pointer"
-            onClick={() => {
-              navigate('/');
-            }}
-          />
-          <div className="flex gap-10 items-center">
-            <div
-              className={`w-40 h-40 rounded-full bg-cover flex items-center ${profileStyle}`}
-            >
-              <p className="w-[100%] text-center font-[Playfair] italic">
-                {engType}
-              </p>
+    <div className="fixed top-0 left-0 w-[100%] z-10">
+      <header className="flex h-[68px] bg-zinc-100 z-10 border-b-1 border-solid border-neutral-300 w-full lg:w-[400px] mx-auto">
+        <nav className="flex items-center w-[100%] px-20">
+          <div className="flex gap-18">
+            <img
+              src={leftArrow}
+              alt="뒤로가기 버튼"
+              className="cursor-pointer"
+              onClick={() => {
+                navigate('/');
+              }}
+            />
+            <div className="flex gap-10 items-center">
+              <div
+                className={`w-40 h-40 rounded-full bg-cover flex items-center ${profileStyle}`}
+              >
+                <p className="w-[100%] text-center font-[Playfair] italic">
+                  {engType}
+                </p>
+              </div>
+              <h1 className="font-medium text-2xl">{nickname}</h1>
             </div>
-            <h1 className="font-medium text-2xl">{nickname}</h1>
           </div>
-        </div>
-        <div className="ml-auto cursor-pointer">
-          <HeartIcon
-            fill={isClickHeart ? 'black' : 'none'}
-            onClick={handleHeartClick}
-          />
-        </div>
-      </nav>
-    </header>
+          <div className="ml-auto cursor-pointer">
+            <HeartIcon
+              fill={isClickHeart ? 'black' : 'none'}
+              onClick={handleHeartClick}
+            />
+          </div>
+        </nav>
+      </header>
+    </div>
   );
 }
 

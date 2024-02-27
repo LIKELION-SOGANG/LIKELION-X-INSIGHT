@@ -28,7 +28,7 @@ function ChatMainSection() {
       break;
   }
   return (
-    <main className="border-t-2 border-slate-800 pr-16 pl-62 py-20 min-h-120 flex flex-col gap-[16px] mb-[60px]">
+    <main className="border-t-2 border-slate-800 pr-16 pl-62 py-20 min-h-120 flex flex-col gap-[16px] mt-[67px] mb-[60px]">
       <ChatBubble text={firstMessage} isMyMessage={false} />
       <ChatInput
         chatInput={chatInput}
