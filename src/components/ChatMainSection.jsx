@@ -2,10 +2,15 @@ import React, { useState } from 'react';
 import ChatBubble from './ChatBubble';
 import ChatInput from './ChatInput';
 import { useParams } from 'react-router-dom';
+import { useRecoilValue } from 'recoil';
+import { myAnswerListAtom, myChatListAtom } from '../state/atom';
+import { mergeArrays } from '../util/mergeArray';
 function ChatMainSection() {
   // 채팅 텍스트
   const { id } = useParams();
   const [chatInput, setChatInput] = useState('');
+  const myChatList = useRecoilValue(myChatListAtom);
+  const myAnswerList = useRecoilValue(myAnswerListAtom);
   let firstMessage;
   switch (id) {
     case '1':
@@ -28,8 +33,13 @@ function ChatMainSection() {
       <ChatInput
         chatInput={chatInput}
         setChatInput={setChatInput}
-        isSendIconBlack={chatInput.length > 0 ? true : false}
+        isSendIconBlack={chatInput?.length !== 0 ? true : false}
       />
+      {myChatList &&
+        myChatList.length !== 0 &&
+        mergeArrays(myChatList, myAnswerList)?.map((item, idx) => (
+          <ChatBubble text={item} key={idx} isMyMessage={idx % 2 === 0} />
+        ))}
     </main>
   );
 }
