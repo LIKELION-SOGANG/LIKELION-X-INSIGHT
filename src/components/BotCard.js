@@ -35,7 +35,6 @@ const bots = [
 ];
 const BotCard = () => {
   const [chatbots, setChatbots] = useState([]);
-
   useEffect(() => {
     fetchChatbots();
     console.log(chatbots);
