@@ -1,6 +1,7 @@
 import React from 'react';
 import { GlobalStyles } from './style/GlobalStyles';
 import Router from './Router';
+import { RecoilRoot } from 'recoil';
 function App() {
   return (
     <>

@@ -20,7 +20,6 @@ function ChatBubble({ text, isMyMessage }) {
   const chatBubbleStyle = isMyMessage
     ? 'ml-20 bg-black text-blue-200 self-end'
     : 'mr-20 bg-zinc-100 self-start';
-
   return (
     <div className={`px-18 py-16 rounded-[10px] relative ${chatBubbleStyle}`}>
       <p className={`text-2xl leading-[21px] ${isMyMessage && avatarColor}`}>

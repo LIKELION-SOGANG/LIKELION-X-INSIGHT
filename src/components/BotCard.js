@@ -35,7 +35,6 @@ const bots = [
 ];
 const BotCard = () => {
   const [chatbots, setChatbots] = useState([]);
-
   useEffect(() => {
     fetchChatbots();
     console.log(chatbots);
@@ -74,7 +73,8 @@ const BotCard = () => {
       {combinedData.map((bot, index) => (
         <div
           key={index}
-          className="relative flex mb-[20px] min-h-[353px] ml-[20px] mr-[20px]"
+          className="relative flex mb-[20px] min-h-[353px] ml-[20px] mr-[20px] cursor-pointer"
+          onClick={() => handleNavigate(bot.id)}
         >
           <img
             src={bot.src}
@@ -84,7 +84,6 @@ const BotCard = () => {
             src={arrow}
             className="z-50 w-[24px] h-[24px] absolute top-[29px] right-[20px]"
             style={{ cursor: 'pointer' }}
-            onClick={() => handleNavigate(bot.id)}
           />
           <div className="flex flex-col justify-end">
             <div className="absolute z-30 w-auto h-[50px] p-20 top-0 left-0 right-0 bottom-0">
