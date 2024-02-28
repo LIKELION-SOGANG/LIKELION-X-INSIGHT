@@ -27,7 +27,6 @@ const ChatInput = forwardRef(
           ? myChatListAtom2
           : myChatListAtom3,
     );
-    console.log(myChatListState);
     const [myAnswerListState, setMyAnswerListState] = useRecoilState(
       id === '1'
         ? myAnswerListAtom1

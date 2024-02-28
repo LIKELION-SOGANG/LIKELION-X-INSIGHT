@@ -37,8 +37,6 @@ const BotCard = () => {
   const [chatbots, setChatbots] = useState([]);
   useEffect(() => {
     fetchChatbots();
-    console.log(chatbots);
-    console.log('여기야:', combinedData);
   }, []);
   const navigate = useNavigate();
   const handleNavigate = (id) => {
