@@ -1,4 +1,4 @@
-import React, { forwardRef, useRef } from 'react';
+import React, { forwardRef, useEffect, useRef } from 'react';
 import TextareaAutosize from 'react-textarea-autosize';
 import styled from 'styled-components';
 import { ReactComponent as SendIcon } from '../assets/images/send-icon.svg';
@@ -20,6 +20,7 @@ const ChatInput = forwardRef(
     // 텍스트 1자 이상일 때 아이콘 검은색으로
     const sendIconColor = isSendIconBlack ? 'black' : '#D1D1D5';
     const { id } = useParams();
+    const inputRef = useRef();
     const [myChatListState, setMyChatListState] = useRecoilState(
       id === '1'
         ? myChatListAtom1
@@ -96,6 +97,10 @@ const ChatInput = forwardRef(
         });
       }, 1);
     };
+
+    useEffect(() => {
+      inputRef.current.focus();
+    }, []);
     return (
       <div className="w-[100%] border-t border-neutral-300 flex-col justify-start items-center gap-[30px] inline-flex fixed bottom-0 left-0 z-10">
         <div className="w-full lg:w-[400px] mx-auto bg-neutral-50 p-20">
@@ -104,6 +109,7 @@ const ChatInput = forwardRef(
               className="text-neutral-500 text-[15px] leading-tight inline-block w-[100%] mr-[37px]"
               placeholder={'무엇이든 물어보세요...'}
               rows={1}
+              ref={inputRef}
               value={chatInput}
               onChange={(e) => {
                 setChatInput(e.target.value);
