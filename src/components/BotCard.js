@@ -34,11 +34,28 @@ const bots = [
   },
 ];
 const BotCard = () => {
-  const [chatbots, setChatbots] = useState([]);
+  const [chatbots, setChatbots] = useState([
+    {
+      chatbotId: 3,
+      chatbotName: '챗봇3',
+      chatbotLike: 4,
+      chatbotRanking: 1,
+    },
+    {
+      chatbotId: 2,
+      chatbotName: '챗봇2',
+      chatbotLike: 2,
+      chatbotRanking: 2,
+    },
+    {
+      chatbotId: 1,
+      chatbotName: '챗봇1',
+      chatbotLike: 1,
+      chatbotRanking: 3,
+    },
+  ]);
   useEffect(() => {
     fetchChatbots();
-    console.log(chatbots);
-    console.log('여기야:', combinedData);
   }, []);
   const navigate = useNavigate();
   const handleNavigate = (id) => {
@@ -67,7 +84,6 @@ const BotCard = () => {
     };
   });
   combinedData.sort((a, b) => a.chatbotId - b.chatbotId);
-
   return (
     <div className="flex flex-col items-center">
       {combinedData.map((bot, index) => (

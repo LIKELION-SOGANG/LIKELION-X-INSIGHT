@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Suspense } from 'react';
 import BotCard from '../components/BotCard';
 import Footer from '../components/Footer';
 import chat_cute from '../assets/images/chat_cute.png';
@@ -13,93 +13,92 @@ function Home() {
   };
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
+    window.scrollTo({
+      top: 0,
+    });
     setTimeout(() => {
       setIsLoading(false);
     }, 500);
   }, []);
   return (
     <>
-      {isLoading ? (
-        <Loading />
-      ) : (
-        <>
+      <Suspense fallback={<Loading />}>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            fontFamily: 'Playfair',
+            fontSize: '24px',
+            lineHeight: '22px',
+            textAlign: 'center',
+            marginTop: '70px',
+            marginBottom: '70px',
+            letterSpacing: '-0.8px',
+          }}
+        >
           <div
             style={{
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'center',
-              alignItems: 'center',
-              fontFamily: 'Playfair',
+              fontWeight: '700',
               fontSize: '24px',
-              lineHeight: '22px',
-              textAlign: 'center',
-              marginTop: '70px',
-              marginBottom: '70px',
+              fontFamily: 'Noto-sans',
               letterSpacing: '-0.8px',
             }}
           >
-            <div
-              style={{
-                fontWeight: '700',
-                fontSize: '24px',
-                fontFamily: 'Noto-sans',
-                letterSpacing: '-0.8px',
-              }}
-            >
-              {data.title}
-            </div>
-            <div
-              style={{
-                fontFamily: 'Noto-sans',
-                lineHeight: '30px',
-                marginTop: '20px',
-                fontSize: '18px',
-                whiteSpace: 'pre-line',
-              }}
-            >
-              {data.explain}
-            </div>
+            {data.title}
           </div>
-          <BotCard />
+          <div
+            style={{
+              fontFamily: 'Noto-sans',
+              lineHeight: '30px',
+              marginTop: '20px',
+              fontSize: '18px',
+              whiteSpace: 'pre-line',
+            }}
+          >
+            {data.explain}
+          </div>
+        </div>
+        <BotCard />
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            textAlign: 'center',
+            marginTop: '188px',
+            marginBottom: '145px',
+            marginLeft: '20px',
+            marginRight: '20px',
+          }}
+        >
           <div
             style={{
               display: 'flex',
-              flexDirection: 'column',
               justifyContent: 'center',
               alignItems: 'center',
+              fontFamily: 'Noto-sans',
+              fontSize: '20px',
+              lineHeight: '22px',
+              fontWeight: 700,
               textAlign: 'center',
-              marginTop: '188px',
-              marginBottom: '145px',
-              marginLeft: '20px',
-              marginRight: '20px',
+              marginTop: '0px',
+              marginBottom: '33px',
+              letterSpacing: '-0.8px',
             }}
           >
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                fontFamily: 'Noto-sans',
-                fontSize: '20px',
-                lineHeight: '22px',
-                fontWeight: 700,
-                textAlign: 'center',
-                marginTop: '0px',
-                marginBottom: '33px',
-                letterSpacing: '-0.8px',
-              }}
-            >
-              {data.alpha}
-            </div>
-            <img
-              src={chat_cute}
-              style={{ width: 'auto', height: 'auto', marginBottom: '33px' }}
-            />
-            <img src={chat_tough} style={{ width: 'auto', height: 'auto' }} />
+            {data.alpha}
           </div>
-          <Footer />
-        </>
-      )}
+          <img
+            src={chat_cute}
+            style={{ width: 'auto', height: 'auto', marginBottom: '33px' }}
+          />
+          <img src={chat_tough} style={{ width: 'auto', height: 'auto' }} />
+        </div>
+        <Footer />
+      </Suspense>
     </>
   );
 }

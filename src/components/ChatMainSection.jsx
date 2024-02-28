@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import ChatBubble from './ChatBubble';
 import ChatInput from './ChatInput';
 import { useParams } from 'react-router-dom';
@@ -39,6 +39,11 @@ function ChatMainSection() {
         '안녕하세요. 저는 까칠한 서담이에요. 저는 당신의 기분과는 상관없이 있는 그대로 말씀 드리는 편이에요.';
       break;
   }
+  useEffect(() => {
+    window.scrollTo({
+      top: document.body.scrollHeight,
+    });
+  }, []);
   return (
     <main
       className="border-t-2 border-slate-800 pr-16 pl-62 py-20 min-h-120 flex flex-col gap-[16px] mt-[67px] mb-[60px]"
