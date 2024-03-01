@@ -171,6 +171,18 @@ function ChatMainSection() {
     setChatInput(exampleMessage[idx]);
     handleClickPostButton(exampleMessage[idx]);
   };
+  const pressEnter = (e) => {
+    if (e.nativeEvent.isComposing) {
+      return; // 조합 중이므로 동작을 막는다.
+    }
+    if (e.key === 'Enter' && e.shiftKey) {
+      // [shift] + [Enter] 치면 걍 리턴
+      return;
+    } else if (e.key === 'Enter') {
+      handleClickPostButton(chatInput);
+    }
+  };
+
   useEffect(() => {
     window.scrollTo({
       top: document.body.scrollHeight,
@@ -187,6 +199,7 @@ function ChatMainSection() {
         chatInput={chatInput}
         setChatInput={setChatInput}
         isBlockChatInput={isBlockChatInput}
+        pressEnter={pressEnter}
         isSendIconBlack={chatInput?.length !== 0 ? true : false}
         handleClickPostButton={handleClickPostButton}
       />
