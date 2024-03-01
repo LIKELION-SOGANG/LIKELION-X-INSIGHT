@@ -20,6 +20,7 @@ function ChatMainSection() {
   // 채팅 텍스트
   const { id } = useParams();
   const [chatInput, setChatInput] = useState('');
+  const [isBlockChatInput, setIsBlockChatInput] = useState(false);
   const myChatList1 = useRecoilValue(myChatListAtom1);
   const myAnswerList1 = useRecoilValue(myAnswerListAtom1);
   const myChatList2 = useRecoilValue(myChatListAtom2);
@@ -78,8 +79,10 @@ function ChatMainSection() {
       message2: str,
       top_n: 0.92,
       temperature: 0.2,
+      max_tokens: 1000,
     };
     setChatInput('');
+    setIsBlockChatInput(true);
     setMyAnswerListState([...myAnswerListState, '답변 생성 중...']);
     setTimeout(() => {
       window.scrollTo({
@@ -87,37 +90,78 @@ function ChatMainSection() {
         behavior: 'smooth', // 부드럽게 스크롤하려면 추가합니다.
       });
     }, 100);
-
-    const res = await instance.post('api/chatbot', body);
-    if (res?.status === 500) {
-      // 예외처리
+    try {
+      const res = await instance.post('api/chatbot', body);
+      if (res?.status === 500) {
+        setMyAnswerListState([
+          ...myAnswerListState,
+          '다른 질문을 해주시겠어요? ㅠㅠ 대답을 하기가 좀 어렵네요.',
+        ]);
+        localStorage.setItem(
+          id === '1'
+            ? 'myAnswerList1'
+            : id === '2'
+              ? 'myAnswerList2'
+              : 'myAnswerList3',
+          JSON.stringify([
+            ...myAnswerListState,
+            '다른 질문을 해주시겠어요? ㅠㅠ 대답을 하기가 좀 어렵네요.',
+          ]),
+        );
+        setTimeout(() => {
+          window.scrollTo({
+            top: document.body.scrollHeight,
+            behavior: 'smooth', // 부드럽게 스크롤하려면 추가합니다.
+          });
+        }, 1);
+        return;
+      }
+      // 응답 목록 상태 및 로컬 저장소 업데이트
+      setIsBlockChatInput(false);
+      const updatedAnswerList = [
+        ...myAnswerListState,
+        res.data.messages[0].message,
+      ];
+      setMyAnswerListState(updatedAnswerList);
+      localStorage.setItem(
+        id === '1'
+          ? 'myAnswerList1'
+          : id === '2'
+            ? 'myAnswerList2'
+            : 'myAnswerList3',
+        JSON.stringify(updatedAnswerList),
+      );
+      setTimeout(() => {
+        window.scrollTo({
+          top: document.body.scrollHeight,
+          behavior: 'smooth', // 부드럽게 스크롤하려면 추가합니다.
+        });
+      }, 1);
+    } catch (err) {
       setMyAnswerListState([
         ...myAnswerListState,
         '다른 질문을 해주시겠어요? ㅠㅠ 대답을 하기가 좀 어렵네요.',
       ]);
+      setIsBlockChatInput(false);
+      localStorage.setItem(
+        id === '1'
+          ? 'myAnswerList1'
+          : id === '2'
+            ? 'myAnswerList2'
+            : 'myAnswerList3',
+        JSON.stringify([
+          ...myAnswerListState,
+          '다른 질문을 해주시겠어요? ㅠㅠ 대답을 하기가 좀 어렵네요.',
+        ]),
+      );
+      setTimeout(() => {
+        window.scrollTo({
+          top: document.body.scrollHeight,
+          behavior: 'smooth', // 부드럽게 스크롤하려면 추가합니다.
+        });
+      }, 1);
       return;
     }
-    // 응답 목록 상태 및 로컬 저장소 업데이트
-    const updatedAnswerList = [
-      ...myAnswerListState,
-      res.data.messages[0].message,
-    ];
-    setMyAnswerListState(updatedAnswerList);
-    localStorage.setItem(
-      id === '1'
-        ? 'myAnswerList1'
-        : id === '2'
-          ? 'myAnswerList2'
-          : 'myAnswerList3',
-      JSON.stringify(updatedAnswerList),
-    );
-
-    setTimeout(() => {
-      window.scrollTo({
-        top: document.body.scrollHeight,
-        behavior: 'smooth', // 부드럽게 스크롤하려면 추가합니다.
-      });
-    }, 1);
   };
   const exampleMessage = [
     '이번 달 안에 여자친구를 사귀고 싶어. 뭐부터 하는게 좋을까?',
@@ -142,6 +186,7 @@ function ChatMainSection() {
         ref={scrollContainerRef}
         chatInput={chatInput}
         setChatInput={setChatInput}
+        isBlockChatInput={isBlockChatInput}
         isSendIconBlack={chatInput?.length !== 0 ? true : false}
         handleClickPostButton={handleClickPostButton}
       />

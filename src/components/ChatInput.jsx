@@ -5,7 +5,13 @@ import { ReactComponent as SendIcon } from '../assets/images/send-icon.svg';
 // eslint-disable-next-line react/display-name
 const ChatInput = forwardRef(
   (
-    { isSendIconBlack, setChatInput, chatInput, handleClickPostButton },
+    {
+      isSendIconBlack,
+      setChatInput,
+      chatInput,
+      handleClickPostButton,
+      isBlockChatInput,
+    },
     ref,
   ) => {
     // 텍스트 1자 이상일 때 아이콘 검은색으로
@@ -18,11 +24,13 @@ const ChatInput = forwardRef(
               className="text-neutral-500 text-[15px] leading-tight inline-block w-[100%] mr-[37px]"
               placeholder={'무엇이든 물어보세요...'}
               rows={1}
+              maxLength={300}
               value={chatInput}
               onChange={(e) => {
                 setChatInput(e.target.value);
               }}
               maxRows={5}
+              disabled={isBlockChatInput}
             />
             <div
               className="cursor-pointer
