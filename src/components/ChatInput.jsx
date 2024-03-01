@@ -24,6 +24,7 @@ const ChatInput = forwardRef(
               className="text-neutral-500 text-[15px] leading-tight inline-block w-[100%] mr-[37px]"
               placeholder={'무엇이든 물어보세요...'}
               rows={1}
+              maxLength={300}
               value={chatInput}
               onChange={(e) => {
                 setChatInput(e.target.value);
