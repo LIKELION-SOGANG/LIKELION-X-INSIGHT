@@ -179,6 +179,9 @@ function ChatMainSection() {
       // [shift] + [Enter] 치면 걍 리턴
       return;
     } else if (e.key === 'Enter') {
+      if (window.innerWidth < 500) {
+        return;
+      }
       handleClickPostButton(chatInput);
     }
   };
