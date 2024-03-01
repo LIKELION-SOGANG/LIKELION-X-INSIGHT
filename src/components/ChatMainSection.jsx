@@ -20,6 +20,7 @@ function ChatMainSection() {
   // 채팅 텍스트
   const { id } = useParams();
   const [chatInput, setChatInput] = useState('');
+  const [isBlockChatInput, setIsBlockChatInput] = useState(false);
   const myChatList1 = useRecoilValue(myChatListAtom1);
   const myAnswerList1 = useRecoilValue(myAnswerListAtom1);
   const myChatList2 = useRecoilValue(myChatListAtom2);
@@ -78,8 +79,10 @@ function ChatMainSection() {
       message2: str,
       top_n: 0.92,
       temperature: 0.2,
+      max_tokens: 1000,
     };
     setChatInput('');
+    setIsBlockChatInput(true);
     setMyAnswerListState([...myAnswerListState, '답변 생성 중...']);
     setTimeout(() => {
       window.scrollTo({
@@ -98,6 +101,7 @@ function ChatMainSection() {
       return;
     }
     // 응답 목록 상태 및 로컬 저장소 업데이트
+    setIsBlockChatInput(false);
     const updatedAnswerList = [
       ...myAnswerListState,
       res.data.messages[0].message,
@@ -142,6 +146,7 @@ function ChatMainSection() {
         ref={scrollContainerRef}
         chatInput={chatInput}
         setChatInput={setChatInput}
+        isBlockChatInput = {isBlockChatInput}
         isSendIconBlack={chatInput?.length !== 0 ? true : false}
         handleClickPostButton={handleClickPostButton}
       />

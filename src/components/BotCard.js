@@ -60,7 +60,6 @@ const BotCard = () => {
   const navigate = useNavigate();
   const handleNavigate = (id) => {
     navigate(`/chat/${id}`);
-    console.log(id);
   };
   const fetchChatbots = () => {
     instance
