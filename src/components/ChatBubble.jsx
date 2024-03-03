@@ -29,6 +29,7 @@ function ChatBubble({ text, isMyMessage, isExample, onClick }) {
       onClick={onClick}
     >
       <p
+        id="message"
         className={`text-2xl leading-[21px] ${isExample ? 'text-black' : isMyMessage && avatarColor}`}
       >
         {text}

@@ -80,6 +80,7 @@ function ChatMainSection() {
       top_n: 0.92,
       temperature: 0.2,
       max_tokens: 1000,
+      frequency_penalty: 1.5,
     };
     setChatInput('');
     setIsBlockChatInput(true);
