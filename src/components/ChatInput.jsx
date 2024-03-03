@@ -11,6 +11,7 @@ const ChatInput = forwardRef(
       chatInput,
       handleClickPostButton,
       isBlockChatInput,
+      pressEnter,
     },
     ref,
   ) => {
@@ -25,6 +26,7 @@ const ChatInput = forwardRef(
               placeholder={'무엇이든 물어보세요...'}
               rows={1}
               maxLength={300}
+              onKeyUp={pressEnter}
               value={chatInput}
               onChange={(e) => {
                 setChatInput(e.target.value);
